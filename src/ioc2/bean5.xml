@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--根据名字自动装配，需要bean的id和属性名相同-->
+<!--    <bean id="employee" class="Employee" autowire="byName"></bean>-->
+<!--    根据类型自动装配，需要XML文件中只有一个和属性相符的Bean类型-->
+    <bean id="employee" class="ioc2.autowire.Employee" autowire="byType"></bean>
+    <bean id="dept" class="ioc2.autowire.Dept"/>
+</beans>

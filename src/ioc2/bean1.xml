@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="stu" class="ioc2.collectiontype.Stu">
+<!--        <property name="courses">-->
+<!--            <array>-->
+<!--                <value>Java</value>-->
+<!--                <value>MySql</value>-->
+<!--            </array>-->
+<!--        </property>-->
+        <property name="courses">
+            <list>
+                <value>Java</value>
+                <value>MySql</value>
+            </list>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>
+
+        <property name="score">
+            <map>
+                <entry key="Java" value="99.00"/>
+                <entry key="MySql" value="89.00"/>
+            </map>
+        </property>
+
+        <property name="sets">
+            <set>
+                <value>语言</value>
+                <value>数据库</value>
+            </set>
+        </property>
+        <!--    对象数组-->
+        <property name="courdwsList">
+            <list>
+                <ref bean="courdw1"></ref>
+                <ref bean="courdw2"></ref>
+            </list>
+        </property>
+
+    </bean>
+    <bean id="courdw1" class="ioc2.collectiontype.Courdw">
+        <property name="cName" value="Spring5"/>
+    </bean>
+    <bean id="courdw2" class="ioc2.collectiontype.Courdw">
+        <property name="cName" value="JDBC"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    <util:list id="list">-->
+<!--        <ref bean="water"></ref>-->
+<!--    </util:list>-->
+
+    <util:list id="waterList">
+        <value>农夫山泉</value>
+        <value>怡宝</value>
+        <value>康师傅</value>
+    </util:list>
+
+    <bean id="water" class="ioc2.collectiontype.Water">
+        <property name="wName" ref="waterList"/>
+    </bean>
+
+
+
+</beans>

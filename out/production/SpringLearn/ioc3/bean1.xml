@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    通过名称空间创建组件扫描，来扫描注解-->
+    <context:component-scan base-package="ioc3">
+    </context:component-scan>
+
+<!--    不扫描所有的类，只扫描注解类型包含expression包的类-->
+<!--    <context:component-scan base-package="ioc3" use-default-filters="false">-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+<!--    </context:component-scan>-->
+<!--    扫描所有的类，不扫描注解类型包含expression的类-->
+<!--    <context:component-scan base-package="ioc3">-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+<!--    </context:component-scan>-->
+</beans>

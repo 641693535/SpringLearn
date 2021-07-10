@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    使用外部Bean的方式-->
+<!--    创建Emp员工类-->
+<!--    <bean id="emp" class="Emp">-->
+<!--        <property name="ename" value="张三"/>-->
+<!--        <property name="gender" value="男"/>-->
+
+<!--        <property name="dept" ref="dept"></property>-->
+
+<!--    </bean>-->
+<!--    <bean id="dept" class="Dept">-->
+<!--        <property name="dname" value="安保部"/>-->
+<!--    </bean>-->
+<!--    使用外部Bean的方式-->
+    <bean id="emp" class="ioc1.bean.Emp">
+        <property name="ename" value="小明"/>
+        <property name="gender" value="男"/>
+
+        <property name="dept">
+            <bean id="dept" class="ioc1.bean.Dept">
+                <property name="dname" value="法务部"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>

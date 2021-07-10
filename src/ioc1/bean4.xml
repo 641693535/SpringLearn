@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    使用级联赋值-->
+<!--    配置emp类的XML文件-->
+    <bean id="emp" class="ioc1.bean.Emp">
+        <property name="ename" value="Job"/>
+        <property name="gender" value="男"/>
+
+<!--        通过级联赋值，给emp的属性赋值-->
+<!--        方式一，通过XML获取到的类赋值-->
+        <property name="dept" ref="dept"/>
+<!--        方式二，通过emp中的get方法返回的对象进行赋值-->
+        <property name="dept.dname" value="财务部"/>
+
+    </bean>
+    <bean id="dept" class="ioc1.bean.Dept">
+        <property name="dname" value="营销部"/>
+    </bean>
+
+</beans>

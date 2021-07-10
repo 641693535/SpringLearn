@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--    通过XML配置文件配置事务-->
+
+<!--    配置扫描器-->
+    <context:component-scan base-package="txdemo"></context:component-scan>
+
+    <context:property-placeholder location="classpath:txdemo/jdbc.properties"/>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${prop.DriverClassName}"/>
+        <property name="url" value="${prop.url}"/>
+        <property name="username" value="${prop.userName}"/>
+        <property name="password" value="${prop.passWord}"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--创建事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--配置通知-->
+    <tx:advice id="txadvice">
+        <tx:attributes>
+            <tx:method name="getAddMoney"/>
+        </tx:attributes>
+    </tx:advice>
+<!--    配置切入点和切面-->
+    <aop:config>
+<!--        配置切入点-->
+        <aop:pointcut id="pt" expression="execution(* txdemo.service.*.*(..))"/>
+<!--        配置切面-->
+        <aop:advisor advice-ref="txadvice" pointcut-ref="pt"/>
+    </aop:config>
+
+</beans>

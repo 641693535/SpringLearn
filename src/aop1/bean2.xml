@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--通过AspectJ配置文件来实现AOP-->
+
+<!--    创建两个类的对象-->
+    <bean id="book" class="aop1.aopxml.Book"></bean>
+    <bean id="bookProxy" class="aop1.aopxml.BookProxy"></bean>
+
+    <!--配置AOP增强-->
+    <aop:config>
+        <aop:pointcut id="b" expression="execution(* aop1.aopxml.*.*())"/>
+
+        <aop:aspect ref="bookProxy">
+            <aop:before method="before" pointcut-ref="b"></aop:before>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

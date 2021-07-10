@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--p名称空间注入 如上是第一步，创建一个p的名称-->
+    <!--配置User类的XML文件-->
+    <bean id="user" class="ioc1.User"></bean>
+
+<!--    通过set方法注入属性的空值-->
+    <!--    配置Book类的XMl-->
+<!--    <bean id="book" class="Book">-->
+<!--        &lt;!&ndash;        通过Set方法赋值Book的属性&ndash;&gt;-->
+<!--        <property name="bname" value="骆驼祥子"/>-->
+<!--        <property name="bprice" value="88.00"/>-->
+<!--    </bean>-->
+
+<!--    p名称空间注入：第二步，创建类，并简化Set赋值方法-->
+<!--    <bean id="book" class="Book" p:bname="四世同堂" p:bprice="86.00">-->
+<!--    </bean>-->
+<!--    通过Set方法注入属性的空值-->
+    <bean id="book" class="ioc1.Book">
+        <property name="bname" value="骆驼祥子"></property>
+        <property name="bprice" value="88.00"></property>
+<!--        设置Null值-->
+<!--        <property name="address">-->
+<!--            <null/>-->
+<!--        </property>-->
+
+        <property name="address">
+            <value><![CDATA[南京]]></value>
+        </property>
+    </bean>
+
+<!--    配置Order类的XML-->
+    <bean id="orders" class="ioc1.Orders">
+<!--        通过有参构造器赋值Orders的属性-->
+        <constructor-arg name="id" value="1001"/>
+        <constructor-arg name="name" value="LiNing"/>
+    </bean>
+</beans>
